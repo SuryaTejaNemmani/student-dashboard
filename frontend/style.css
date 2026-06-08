@@ -1,36 +1,36 @@
-*{
+* {
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
 }
 
-body{
+body {
     text-align: center;
 }
-nav{
+nav {
     background-color: black;
     text-align: center;
     padding: 16px;
     margin-bottom: 40px;
 }
 
-nav a{
+nav a {
     text-decoration: none;
     color: white;
     font-size: 16px;
     margin: 0px 20px;
 }
 
-nav a:hover{
+nav a:hover {
     color: yellow;
 }
 
-.c1{
+.c1 {
     margin: 50px auto;
     justify-items: center;
 }
 
-form{
+form {
     border: 2px solid black;
     border-radius: 20px;
     padding: 30px;
@@ -39,7 +39,7 @@ form{
     text-align: left;
 }
 
-input{
+input {
     width: 100%;
     margin-top: 10px;
     height: 30px;
@@ -47,7 +47,7 @@ input{
     border-style: ridge;
     padding-left: 5px;
 }
-button{
+button {
     height: 30px;
     width: 100%;
     background-color: cornflowerblue;
@@ -56,22 +56,28 @@ button{
     cursor: pointer;
 }
 
-a{
+a {
     text-decoration: none;
     color: orange;
 }
 
-table{
+table {
     border-collapse: collapse;
 }
-th,tr,td{
+th,
+tr,
+td {
     padding: 4px;
 }
 
-thead{
+thead {
     background-color: rgb(130, 185, 122);
 }
 
-tr:nth-child(even){
+tr:nth-child(even) {
     background-color: rgb(77, 161, 115);
+}
+
+.emp {
+    color: red;
 }
