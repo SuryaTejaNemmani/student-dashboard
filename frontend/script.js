@@ -75,6 +75,14 @@ function getStudents() {
 
             window.location.href = "editStudent.html";
         };
+
+        a2.onclick = (event) => {
+            event.preventDefault();
+            let idx = students.findIndex((st1) => st.rollno == st1[rollno]);
+            students.splice(idx, 1);
+            localStorage.setItem("students", JSON.stringify(students));
+            getStudents();
+        };
     }
 
     if (students.length == 0) {
@@ -94,4 +102,9 @@ function setDetails() {
     roll.value = localStorage.getItem("rollno");
     cgpa.value = localStorage.getItem("cgpa");
     branch.value = localStorage.getItem("branch");
+
+    localStorage.removeItem("name");
+    localStorage.removeItem("rollno");
+    localStorage.removeItem("cgpa");
+    localStorage.removeItem("branch");
 }
