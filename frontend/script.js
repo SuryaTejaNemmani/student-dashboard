@@ -1,17 +1,44 @@
+function register(e) {
+    e.preventDefault();
+
+    let user = document.getElementById("user").value;
+    let pass = document.getElementById("pass").value;
+    let mail = document.getElementById("mail").value;
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    let idx = users.findIndex((u) => u["mail"] == mail);
+    if (idx != -1) {
+        window.alert("User already exists!");
+    } else {
+        users.push({
+            username: user,
+            password: pass,
+            mail: mail,
+        });
+        localStorage.setItem("users", JSON.stringify(users));
+        window.location.href = "login.html";
+    }
+}
+
 function login(e) {
     e.preventDefault();
 
     let user = document.getElementById("user").value;
     let pass = document.getElementById("pass").value;
 
-    localStorage.setItem(
-        "user",
-        JSON.stringify({
-            username: user,
-            password: pass,
-        }),
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    let idx = users.findIndex(
+        (u) => u["username"] == user && u["password"] == pass,
     );
-    window.location.href = "dashboard.html";
+
+    if (idx == -1) {
+        window.alert("Incorrect username/password");
+    } else {
+        localStorage.setItem("user", JSON.stringify(users[idx]));
+        window.location.href = "dashboard.html";
+    }
 }
 
 function logout() {
@@ -42,6 +69,7 @@ function addStudents(e) {
 function getStudents() {
     let students = JSON.parse(localStorage.getItem("students")) || [];
     let tb = document.getElementsByTagName("tbody")[0];
+    tb.innerHTML = "";
     for (let st of students) {
         let tr = document.createElement("tr");
         let td1 = document.createElement("td");
@@ -78,7 +106,7 @@ function getStudents() {
 
         a2.onclick = (event) => {
             event.preventDefault();
-            let idx = students.findIndex((st1) => st.rollno == st1[rollno]);
+            let idx = students.findIndex((st1) => st.rollno == st1["rollno"]);
             students.splice(idx, 1);
             localStorage.setItem("students", JSON.stringify(students));
             getStudents();
@@ -107,4 +135,19 @@ function setDetails() {
     localStorage.removeItem("rollno");
     localStorage.removeItem("cgpa");
     localStorage.removeItem("branch");
+}
+
+function updateStudent(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let roll = document.getElementById("roll").value;
+    let cgpa = document.getElementById("cgpa").value;
+    let branch = document.getElementById("branch").value;
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+    let idx = students.findIndex((st1) => roll == st1["rollno"]);
+    let ob1 = { name: name, rollno: roll, cgpa: cgpa, branch: branch };
+    students[idx] = ob1;
+    localStorage.setItem("students", JSON.stringify(students));
+    window.location.href = "viewStudents.html";
 }
