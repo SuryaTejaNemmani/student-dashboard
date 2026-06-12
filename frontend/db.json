@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "username": "asd",
+      "password": "sasdsafd",
+      "mail": "asd@asd.asd",
+      "id": "ixORA6pitHQ"
+    }
+  ],
+  "students": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
